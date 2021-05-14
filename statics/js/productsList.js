@@ -1,21 +1,17 @@
-import API from './api.js';
+import API from "./api.js";
 
-//VARIABLES
-const $cardProduct = document.querySelector( '#product-container' );
-let newPrice = 0;
+const $cardProduct = document.querySelector("#product-container");
 
-class Product{
-    constructor({ url_image, name, price }){
-        
-        this.image = url_image
-        this.name = name 
-        this.price = price
-        this.render()
-
-    };
-    build() {
-    
-        return `
+class Product {
+  constructor({id, url_image, name, price }) {
+    this.id = id;
+    this.image = url_image;
+    this.name = name;
+    this.price = price;
+    this.render();
+  }
+  buildProduct() {
+    return `
                 <div class="col-md-4">
                     <div class="card mt-3 mt-5">
                         <div class="product align-items-center p-2 text-center">
@@ -40,55 +36,48 @@ class Product{
                         </div>
                         <!--Button card-->
                         <div class="p-3 btnProd text-center text-white mt-3 cursor">
-                            <span class="text-uppercase">
+                            <span data-id="${this.id}" class="text-uppercase add-car">
                                 Agregar al carrito
                                 <i class="bi bi-cart-plus-fill" style="font-size: 1.2rem;"></i>
                             </span>
                         </div>
                     </div>
                 </div>
-        `
-    };
-    render(){
-        $cardProduct.insertAdjacentHTML('afterbegin', this.build());
-    }
-
+        `;
+  }
+  render() {
+    $cardProduct.insertAdjacentHTML("afterbegin", this.buildProduct());
+  }
 }
 
 const api = new API();
 
-const listProducts = async () => {
-    
-const products = await api.getProducts()
+function initApp(products) {
+  let newPrice = 0;
+  products.forEach((data) => {
+    newPrice = (data.price * data.discount) / 100;
+    data.price -= newPrice;
+    new Product(data);
+  });
+}
 
-products.forEach( data => {
-    
-    newPrice = data.price * data.discount/100
-    data.price -= newPrice
-    new Product( data )
-    
-});
+const listProducts = async () => {
+  const products = await api.getProducts();
+
+  initApp(products);
 };
 
 const filterProducts = async (searchProduct) => {
-    
-    if(searchProduct.length > 3){
-    $cardProduct.innerHTML = ''
-    const productsFiltered = await api.filterProducts(searchProduct)
+  if (searchProduct.length > 3) {
+    $cardProduct.innerHTML = "";
+    const productsFiltered = await api.filterProducts(searchProduct);
 
-    productsFiltered.forEach( data => {
-        console.log(data)
-        newPrice = data.price * data.discount/100
-        data.price -= newPrice
-        new Product( data )
-        
-    });
-}
-if(searchProduct.length === 1){
-    $cardProduct.innerHTML = ''
+    initApp(productsFiltered);
+  }
+  if (searchProduct.length === 1) {
+    $cardProduct.innerHTML = "";
     listProducts();
-}
+  }
 };
 
-
-export { listProducts, filterProducts }
+export { listProducts, filterProducts };
