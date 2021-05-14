@@ -28,7 +28,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand">Bsale Test</a>
                 <form class="d-flex">
-                    <input class="form-control" type="tienda" placeholder="Tienda" aria-label="Tienda">
+                    <input id="FilterProd" class="form-control" type="tienda" placeholder="Tienda" aria-label="Tienda">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
                 <i class="shop bi bi-shop"  style="font-size: 1.5rem; margin-right: 2em;"></i>
@@ -39,106 +39,9 @@
         <!--MAIN-->
         <!--container para todos los productos-->
         <div class="container mb-5 mt-5">
-            <div class="row">
+            <div id="product-container" class="row">
                 <!--Card 1-->
-                <div class="col">
-                    <div class="card mt-3 mt-5">
-                        <div class="product align-items-center p-2 text-center">
-                            <img src="../statics/images/auriculares-.jpg" alt="" class="rounded" width="160">
-                            <h5>Auriculares</h5>
-                            <!--Card Info-->
-                            <div class="mt-3 info">
-                                <span class="text1 d-block">Lorem ipsum dolor corrufig</span>
-                                <span class="text1">Lorem ipsum dolor </span>
-                            </div>
-                            <div class="costo mt-3 text-dark">
-                                <span>s/ 69.99</span>
-                                <div class="star mt-3 align-items-center">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-half"></i>
-                                </div>
-                            </div>
-                            <!--Card info end-->
-                        </div>
-                        <!--Button card-->
-                        <div class="p-3 btnProd text-center text-white mt-3 cursor">
-                            <span class="text-uppercase">
-                                Agregar al carrito
-                                <i class="bi bi-cart-plus-fill" style="font-size: 1.2rem;"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
                 <!--end card1-->
-                <!--Card 2-->
-                <div class="col-md-4">
-                    <div class="card mt-3 mt-5">
-                        <div class="product align-items-center p-2 text-center">
-                            <img src="../statics/images/auriculares-.jpg" alt="" class="rounded" width="160">
-                            <h5>Auriculares</h5>
-                            <!--Card Info-->
-                            <div class="mt-3 info">
-                                <span class="text1 d-block">Lorem ipsum dolor corrufig</span>
-                                <span class="text1">Lorem ipsum dolor </span>
-                            </div>
-                            <div class="costo mt-3 text-dark">
-                                <span>s/ 69.99</span>
-                                <div class="star mt-3 align-items-center">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-half"></i>
-                                </div>
-                            </div>
-                            <!--Card info end-->
-                        </div>
-                        <!--Button card-->
-                        <div class="p-3 btnProd text-center text-white mt-3 cursor">
-                            <span class="text-uppercase">
-                                Agregar al carrito
-                                <i class="bi bi-cart-plus-fill"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!--end card2-->
-                <!--Card 3-->
-                <div class="col-md-4">
-                    <div class="card mt-3 mt-5">
-                        <div class="product align-items-center p-2 text-center">
-                            <img src="../statics/images/auriculares-.jpg" alt="" class="rounded" width="160">
-                            <h5>Auriculares</h5>
-                            <!--Card Info-->
-                            <div class="mt-3 info">
-                                <span class="text1 d-block">Lorem ipsum dolor corrufig</span>
-                                <span class="text1">Lorem ipsum dolor </span>
-                            </div>
-                            <div class="costo mt-3 text-dark">
-                                <span>s/ 69.99</span>
-                                <div class="star mt-3 align-items-center">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-half"></i>
-                                </div>
-                            </div>
-                            <!--Card info end-->
-                        </div>
-                        <!--Button card-->
-                        <div class="p-3 btnProd text-center text-white mt-3 cursor">
-                            <span class="text-uppercase">
-                                Agregar al carrito
-                                <i class="bi bi-cart-plus-fill"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!--end card3-->
             </div>
         </div>
 
@@ -149,7 +52,7 @@
         </footer>
         <!--END FOOTER-->
     </div>
-    <script src="../statics/js/main.js"></script>
+    <script type="module" src="../statics/js/main.js"></script>
 </body>
 
 </html>
