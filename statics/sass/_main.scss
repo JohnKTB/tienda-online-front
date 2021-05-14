@@ -1,0 +1,40 @@
+.container {
+  margin-top: 110px !important;
+  .card {
+    border: none;
+    outline: none;
+    background-color: #fff;
+    border-radius: 20px;
+
+    .info {
+      line-height: 17px;
+      .text1 {
+        font-size: 13px;
+        color: #cbcbcb;
+      }
+    }
+    .start {
+      color: #fbc02d;
+    }
+    .costo span {
+      color: #fb3531;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .btnProd {
+      background: #dc3545;
+    }
+    .btnProd:hover {
+      opacity: 0.8;
+    }
+    .cursor {
+      cursor: pointer;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+  }
+  .card:hover {
+    transform: translateY(-20px);
+    transition: transform 0.3s;
+  }
+}

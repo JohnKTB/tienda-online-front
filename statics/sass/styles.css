@@ -1,0 +1,72 @@
+.container {
+  margin-top: 110px !important;
+}
+
+.container .card {
+  border: none;
+  outline: none;
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.container .card .info {
+  line-height: 17px;
+}
+
+.container .card .info .text1 {
+  font-size: 13px;
+  color: #cbcbcb;
+}
+
+.container .card .start {
+  color: #fbc02d;
+}
+
+.container .card .costo span {
+  color: #fb3531;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.container .card .btnProd {
+  background: #dc3545;
+}
+
+.container .card .btnProd:hover {
+  opacity: 0.8;
+}
+
+.container .card .cursor {
+  cursor: pointer;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.container .card:hover {
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+  background: #09161d;
+}
+/*# sourceMappingURL=styles.css.map */
