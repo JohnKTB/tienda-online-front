@@ -1,3 +1,7 @@
+.filter_category{
+  width: 30vw;
+  top: 8em;
+}
 .container {
   margin-top: 110px !important;
   .card {
@@ -36,5 +40,13 @@
   .card:hover {
     transform: translateY(-20px);
     transition: transform 0.3s;
+  }
+}
+
+@media (max-width: 750px) {
+  .filter_category{
+    top: 12em;
+    left: 27%;
+    width: 45vw;
   }
 }

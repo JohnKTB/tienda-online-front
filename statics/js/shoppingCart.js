@@ -85,18 +85,16 @@ function clearCar(e) {
 
 function deleteProductLocalStorage(product) {
   let productsLS;
-  //Obtener el arreglo de cursos
+
   productsLS = getProductLocalStorage();
-  //Iteramos comparando el ID del curso borrado con los del LS
+
   productsLS.forEach(({ id }, index) => {
     if (id === product) productsLS.splice(index, 1);
   });
 
-  //Agregamos el arreglo actual al LS
   localStorage.setItem("products", JSON.stringify(productsLS));
 }
 
-//Cargar LocalStorage
 function loadLocalStorage() {
   let productsLS;
   productsLS = getProductLocalStorage();
@@ -112,7 +110,6 @@ function loadLocalStorage() {
   });
 }
 
-//Agregar curso al localStorage
 function addProductLocalStorage(product) {
   let products;
   products = getProductLocalStorage();
@@ -120,7 +117,6 @@ function addProductLocalStorage(product) {
   localStorage.setItem("products", JSON.stringify(products));
 }
 
-//obtener curso del localStorage. Comprueba si hay algo en el LS
 function getProductLocalStorage() {
   let products;
   if (localStorage.getItem("products") == null) {
@@ -131,12 +127,10 @@ function getProductLocalStorage() {
   return products;
 }
 
-//Vaciar localStorage
 function clearLocalStorage() {
   localStorage.clear();
 }
 
-//Comprobar curso por ID
 function checkcProductId(product) {
   let products, exist;
   products = getProductLocalStorage();

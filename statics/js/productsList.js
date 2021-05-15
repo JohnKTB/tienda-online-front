@@ -1,14 +1,32 @@
 import API from "./api.js";
 
 const $cardProduct = document.querySelector("#product-container");
+const $categorySelect = document.querySelector("#categories");
+const filter = document.querySelector("#FilterProd");
+
+class Category {
+  constructor({ id, name }) {
+    this.id = id;
+    this.name = name;
+    this.renderCategory();
+  }
+  buildCategory() {
+    return `
+    <option value="${this.id}">${this.name}</option>
+    `;
+  }
+  renderCategory() {
+    $categorySelect.insertAdjacentHTML("beforeend", this.buildCategory());
+  }
+}
 
 class Product {
-  constructor({id, url_image, name, price }) {
+  constructor({ id, url_image, name, price }) {
     this.id = id;
     this.image = url_image;
     this.name = name;
     this.price = price;
-    this.render();
+    this.renderProduct();
   }
   buildProduct() {
     return `
@@ -45,39 +63,66 @@ class Product {
                 </div>
         `;
   }
-  render() {
+  renderProduct() {
     $cardProduct.insertAdjacentHTML("afterbegin", this.buildProduct());
   }
 }
 
 const api = new API();
 
-function initApp(products) {
+function initCardProduct(products) {
   let newPrice = 0;
-  products.forEach((data) => {
-    newPrice = (data.price * data.discount) / 100;
-    data.price -= newPrice;
-    new Product(data);
+  products.forEach((product) => {
+    newPrice = (product.price * product.discount) / 100;
+    product.price -= newPrice;
+    new Product(product);
   });
 }
 
-const listProducts = async () => {
+function initCatgories(categories) {
+  categories.forEach((categories) => {
+    new Category(categories);
+  });
+}
+
+async function listProducts() {
   const products = await api.getProducts();
 
-  initApp(products);
-};
+  initCardProduct(products);
+}
 
-const filterProducts = async (searchProduct) => {
+async function filterProducts(searchProduct) {
   if (searchProduct.length > 3) {
     $cardProduct.innerHTML = "";
     const productsFiltered = await api.filterProducts(searchProduct);
 
-    initApp(productsFiltered);
+    initCardProduct(productsFiltered);
   }
   if (searchProduct.length === 1) {
     $cardProduct.innerHTML = "";
     listProducts();
   }
-};
+}
 
-export { listProducts, filterProducts };
+async function listCategories() {
+  const categories = await api.getCategories();
+  initCatgories(categories);
+}
+
+async function filterCategories(CategoryId) {
+  if (CategoryId !== "Categorias") {
+    $cardProduct.innerHTML = "";
+    const productsFiltered = await api.filterCategories(CategoryId);
+    initCardProduct(productsFiltered);
+  } else {
+    listProducts();
+  }
+}
+
+document.addEventListener("keyup", () => filterProducts(filter.value));
+$categorySelect.addEventListener("change", (e) =>
+  filterCategories(e.target.value)
+);
+
+listProducts();
+listCategories();
