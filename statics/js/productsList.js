@@ -26,7 +26,6 @@ class Product {
     this.image = url_image;
     this.name = name;
     this.price = price;
-    this.renderProduct();
   }
   buildProduct() {
     return `
@@ -63,10 +62,23 @@ class Product {
                 </div>
         `;
   }
+  buildMessage(message) {
+    return `
+    <p class="h4">Lo sentimos, pero no encontramos resultados para <p class="h1">"${message}"</p></p>
+    `;
+  }
   renderProduct() {
     $cardProduct.insertAdjacentHTML("afterbegin", this.buildProduct());
   }
+  renderMessage(message) {
+    $cardProduct.insertAdjacentHTML("afterbegin", this.buildMessage(message));
+  }
 }
+
+document.addEventListener("keyup", () => filterProducts(filter.value));
+$categorySelect.addEventListener("change", (e) =>
+  filterCategories(e.target.value)
+);
 
 const api = new API();
 
@@ -75,7 +87,7 @@ function initCardProduct(products) {
   products.forEach((product) => {
     newPrice = (product.price * product.discount) / 100;
     product.price -= newPrice;
-    new Product(product);
+    new Product(product).renderProduct();
   });
 }
 
@@ -87,19 +99,33 @@ function initCatgories(categories) {
 
 async function listProducts() {
   const products = await api.getProducts();
-
   initCardProduct(products);
 }
 
 async function filterProducts(searchProduct) {
   if (searchProduct.length > 3) {
+    
     $cardProduct.innerHTML = "";
-    const productsFiltered = await api.filterProducts(searchProduct);
-
-    initCardProduct(productsFiltered);
+    let productsFiltered = await api.filterProducts(searchProduct);
+    productsFiltered.length != 0
+      ? initCardProduct(productsFiltered)
+      : new Product({}).renderMessage(filter.value);
   }
   if (searchProduct.length === 1) {
     $cardProduct.innerHTML = "";
+    listProducts();
+  }
+}
+
+async function filterCategories(CategoryId) {
+  if (CategoryId !== "Categorias") {
+    console.log($categorySelect.value)
+    $cardProduct.innerHTML = "";
+    const productsFiltered = await api.filterCategories(CategoryId);
+    productsFiltered.length != 0
+      ? initCardProduct(productsFiltered)
+      : new Product({}).renderMessage();
+  } else {
     listProducts();
   }
 }
@@ -108,21 +134,6 @@ async function listCategories() {
   const categories = await api.getCategories();
   initCatgories(categories);
 }
-
-async function filterCategories(CategoryId) {
-  if (CategoryId !== "Categorias") {
-    $cardProduct.innerHTML = "";
-    const productsFiltered = await api.filterCategories(CategoryId);
-    initCardProduct(productsFiltered);
-  } else {
-    listProducts();
-  }
-}
-
-document.addEventListener("keyup", () => filterProducts(filter.value));
-$categorySelect.addEventListener("change", (e) =>
-  filterCategories(e.target.value)
-);
 
 listProducts();
 listCategories();

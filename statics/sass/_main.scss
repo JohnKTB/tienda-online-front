@@ -1,9 +1,71 @@
+@import 'variables';
+
+.toggle {
+  background: transparent;
+  background-color: transparent;
+  border-radius: $toggle-height;
+  cursor: pointer;
+  visibility: hidden;
+  height: $toggle-height;
+  width: $toggle-width;
+  position: absolute;
+  top: 20%;
+  left: 80%;
+  z-index: 2;
+  &::before, &::after { // track, slider
+    content: "";
+    display: block;
+    transition: 0.1s all ease-in-out;
+    visibility: visible;
+  }
+  &::before { // track
+    background: transparent;
+    border: $border-width solid $dark;
+    border-radius: $toggle-height;
+    height: inherit;
+    width: inherit;
+  }
+  &::after { // slider
+    background: $dark;
+    border-radius: $toggle-height - ($border-width * 4);
+    height: $toggle-height - ($border-width * 4);
+    width: $toggle-height;
+    position: absolute;
+    top: $border-width * 2;
+    left: $border-width * 2;
+  }
+  &:checked { 
+    
+    &::before { 
+      background: $dark;
+      border: $border-width solid $light;
+    }
+    &::after { 
+      background: $light;
+      left: $toggle-width - $toggle-height - $border-width * 2;
+    }
+    ~ .bg {
+      background: $dark;
+    }
+  }
+}
+/*BTN DARK MODE*/
+
+.dark{ 
+  background-color: #343535; 
+}
 .filter_category{
   width: 30vw;
   top: 8em;
-}
-.container {
+} 
+.container { 
   margin-top: 110px !important;
+  .h4{
+    color: #BEC8C8 ;
+  }
+  .h1{
+    color: #BEC8C8 ;
+  }
   .card {
     border: none;
     outline: none;
@@ -17,7 +79,10 @@
         color: #cbcbcb;
       }
     }
-    .start {
+    .bi-star-fill {
+      color: #fbc02d;
+    }
+    .bi-star-half{
       color: #fbc02d;
     }
     .costo span {
@@ -48,5 +113,11 @@
     top: 12em;
     left: 27%;
     width: 45vw;
+  }
+}
+@media (max-width: 375px) {
+  .toggle{
+    position: absolute;
+    top: 30%;
   }
 }

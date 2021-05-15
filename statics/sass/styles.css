@@ -1,3 +1,62 @@
+.toggle {
+  background: transparent;
+  background-color: transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  visibility: hidden;
+  height: 20px;
+  width: 46.6px;
+  position: absolute;
+  top: 20%;
+  left: 80%;
+  z-index: 2;
+}
+
+.toggle::before, .toggle::after {
+  content: "";
+  display: block;
+  -webkit-transition: 0.1s all ease-in-out;
+  transition: 0.1s all ease-in-out;
+  visibility: visible;
+}
+
+.toggle::before {
+  background: transparent;
+  border: 2px solid #111115;
+  border-radius: 20px;
+  height: inherit;
+  width: inherit;
+}
+
+.toggle::after {
+  background: #111115;
+  border-radius: 12px;
+  height: 12px;
+  width: 20px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+.toggle:checked::before {
+  background: #111115;
+  border: 2px solid #EEE;
+}
+
+.toggle:checked::after {
+  background: #EEE;
+  left: 22.6px;
+}
+
+.toggle:checked ~ .bg {
+  background: #111115;
+}
+
+/*BTN DARK MODE*/
+.dark {
+  background-color: #343535;
+}
+
 .filter_category {
   width: 30vw;
   top: 8em;
@@ -5,6 +64,14 @@
 
 .container {
   margin-top: 110px !important;
+}
+
+.container .h4 {
+  color: #BEC8C8;
+}
+
+.container .h1 {
+  color: #BEC8C8;
 }
 
 .container .card {
@@ -23,7 +90,11 @@
   color: #cbcbcb;
 }
 
-.container .card .start {
+.container .card .bi-star-fill {
+  color: #fbc02d;
+}
+
+.container .card .bi-star-half {
   color: #fbc02d;
 }
 
@@ -61,6 +132,13 @@
     top: 12em;
     left: 27%;
     width: 45vw;
+  }
+}
+
+@media (max-width: 375px) {
+  .toggle {
+    position: absolute;
+    top: 30%;
   }
 }
 
@@ -142,9 +220,44 @@
   }
 }
 
+#BtnTop {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #ff9800;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+#BtnTop::after {
+  content: "\22C0";
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1.5em;
+  line-height: 0.5em;
+  color: #fff;
+}
+
+#BtnTop:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #555;
+}
+
 * {
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -158,6 +271,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   min-height: 100vh;
-  background: #09161d;
+  background: #D1D8D5;
 }
 /*# sourceMappingURL=styles.css.map */

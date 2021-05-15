@@ -6,7 +6,7 @@ const clearC = document.getElementById("vaciar-carrito");
 
 //LISTENERS
 LoadListener();
-export default function LoadListener() {
+function LoadListener() {
   listProducts.addEventListener("click", buyProduct);
   car.addEventListener("click", deleteProduct);
   clearC.addEventListener("click", clearCar);
