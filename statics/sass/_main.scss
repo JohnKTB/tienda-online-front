@@ -61,16 +61,17 @@
 .container { 
   margin-top: 110px !important;
   .h4{
-    color: #BEC8C8 ;
+    color: #8B8E8E;
   }
   .h1{
-    color: #BEC8C8 ;
+    color: #8B8E8E;
   }
   .card {
     border: none;
     outline: none;
     background-color: #fff;
     border-radius: 20px;
+    box-shadow: 7px 11px 12px -8px rgba(0,0,0,0.75);
 
     .info {
       line-height: 17px;

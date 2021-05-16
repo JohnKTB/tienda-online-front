@@ -67,11 +67,11 @@
 }
 
 .container .h4 {
-  color: #BEC8C8;
+  color: #8B8E8E;
 }
 
 .container .h1 {
-  color: #BEC8C8;
+  color: #8B8E8E;
 }
 
 .container .card {
@@ -79,6 +79,8 @@
   outline: none;
   background-color: #fff;
   border-radius: 20px;
+  -webkit-box-shadow: 7px 11px 12px -8px rgba(0, 0, 0, 0.75);
+          box-shadow: 7px 11px 12px -8px rgba(0, 0, 0, 0.75);
 }
 
 .container .card .info {

@@ -81,8 +81,9 @@ $categorySelect.addEventListener("change", (e) =>
 );
 
 const api = new API();
-
+ 
 function initCardProduct(products) {
+  $cardProduct.innerHTML = "";
   let newPrice = 0;
   products.forEach((product) => {
     newPrice = (product.price * product.discount) / 100;
@@ -104,9 +105,8 @@ async function listProducts() {
 
 async function filterProducts(searchProduct) {
   if (searchProduct.length > 3) {
-    
-    $cardProduct.innerHTML = "";
     let productsFiltered = await api.filterProducts(searchProduct);
+    $cardProduct.innerHTML = "";
     productsFiltered.length != 0
       ? initCardProduct(productsFiltered)
       : new Product({}).renderMessage(filter.value);
@@ -119,12 +119,11 @@ async function filterProducts(searchProduct) {
 
 async function filterCategories(CategoryId) {
   if (CategoryId !== "Categorias") {
-    console.log($categorySelect.value)
     $cardProduct.innerHTML = "";
     const productsFiltered = await api.filterCategories(CategoryId);
     productsFiltered.length != 0
       ? initCardProduct(productsFiltered)
-      : new Product({}).renderMessage();
+      : new Product({}).renderMessage($categorySelect.options[$categorySelect.selectedIndex].text);
   } else {
     listProducts();
   }
