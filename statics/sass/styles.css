@@ -87,9 +87,17 @@
   line-height: 17px;
 }
 
-.container .card .info .text1 {
-  font-size: 13px;
-  color: #cbcbcb;
+.container .card .info .discount_text {
+  font-size: 1em;
+  font-weight: 700;
+  color: black;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+}
+
+.container .card .info .discount_number {
+  font-size: 2.5em;
+  color: black;
 }
 
 .container .card .bi-star-fill {
@@ -161,13 +169,13 @@
   ul .submenu {
     position: relative;
   }
-  ul .submenu #carrito {
+  ul .submenu #car {
     display: none;
   }
-  ul .submenu #carrito th {
+  ul .submenu #car th {
     padding: 7px;
   }
-  ul .submenu #carrito .delete-product {
+  ul .submenu #car .delete-product {
     background-color: red;
     border-radius: 50%;
     padding: 5px 10px;
@@ -175,7 +183,7 @@
     color: white;
     font-weight: bold;
   }
-  ul .submenu:hover #carrito {
+  ul .submenu:hover #car {
     display: block;
     position: absolute;
     left: -50%;
@@ -195,13 +203,13 @@
   ul .submenu {
     position: relative;
   }
-  ul .submenu #carrito {
+  ul .submenu #car {
     display: none;
   }
-  ul .submenu #carrito th {
+  ul .submenu #car th {
     padding: 10px;
   }
-  ul .submenu #carrito .delete-product {
+  ul .submenu #car .delete-product {
     background-color: red;
     border-radius: 50%;
     padding: 5px 10px;
@@ -209,7 +217,7 @@
     color: white;
     font-weight: bold;
   }
-  ul .submenu:hover #carrito {
+  ul .submenu:hover #car {
     display: block;
     position: absolute;
     right: 0;

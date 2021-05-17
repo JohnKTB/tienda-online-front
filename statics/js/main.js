@@ -3,8 +3,6 @@ import "./shoppingCart.js";
 
 const mybutton = document.getElementById("BtnTop");
 const btnDarkMode = document.getElementById("btnDarkMode");
-const messageh4 = document.getElementsByClassName("h4");
-const messageh1 = document.getElementsByClassName("h1");
 const body = document.body;
 
 mybutton.addEventListener("click", topFunction);

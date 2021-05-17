@@ -1,8 +1,8 @@
 //VARIABLES
-const car = document.getElementById("carrito");
+const car = document.getElementById("car");
 const listProducts = document.getElementById("product-container");
-const products = document.querySelector("#lista-carrito");
-const clearC = document.getElementById("vaciar-carrito");
+const products = document.querySelector("#list-car");
+const clearC = document.getElementById("clear-car");
 
 //LISTENERS
 LoadListener();

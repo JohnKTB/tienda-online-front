@@ -1,26 +1,43 @@
 export default class API {
+  constructor() {
+    this.url = "http://167.99.117.129/";
+  }
   async getProducts() {
-    const data = await fetch(`http://167.99.117.129/api/products/`);
-    const response = await data.json();
-    return response;
-  };
+    try {
+      const data = await fetch(`${this.url}api/products/`);
+      const response = await data.json();
+      return response;
+    } catch (error) {
+      alert("Error de servidor");
+    }
+  }
   async filterProducts(product) {
-    const data = await fetch(
-      `http://167.99.117.129/api/filter-product/${product}`
-    ); 
-    const response = await data.json();
-    return response;
-  };
+    try {
+      const data = await fetch(`${this.url}api/filter-product/${product}`);
+      const response = await data.json();
+      return response;
+    } catch (error) {
+      alert("Error de servidor");
+    }
+  }
   async getCategories() {
-    const data = await fetch(`http://167.99.117.129/api/categories/`);
-    const response = await data.json();
-    return response;
-  };
+    try {
+      const data = await fetch(`${this.url}api/categories/`);
+      const response = await data.json();
+      return response;
+    } catch (error) {
+      alert("Error de servidor");
+    }
+  }
   async filterCategories(categoryId) {
-    const data = await fetch(
-      `http://127.0.0.1:8000/api/filter-product-for-category/${categoryId}`
-    );
-    const response = await data.json();
-    return response;
-  };
+    try {
+      const data = await fetch(
+        `${this.url}api/filter-product-for-category/${categoryId}`
+      );
+      const response = await data.json();
+      return response;
+    } catch (error) {
+      alert("Error de servidor");
+    }
+  }
 }

@@ -75,9 +75,16 @@
 
     .info {
       line-height: 17px;
-      .text1 {
-        font-size: 13px;
-        color: #cbcbcb;
+      .discount_text {
+        font-size: 1em;
+        font-weight: 700;
+        color: black;
+        margin-top: 2em;
+        margin-bottom: 1.5em;
+      }
+      .discount_number {
+        font-size: 2.5em;
+        color: black;
       }
     }
     .bi-star-fill {
